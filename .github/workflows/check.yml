@@ -1,0 +1,29 @@
+name: Biergerpakt Orientation Day Checker
+
+on:
+  schedule:
+    - cron: '0 8 * * *'  # Every day at 8:00 AM UTC (10:00 AM Luxembourg time)
+  workflow_dispatch:       # Also allows manual trigger from GitHub UI
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run checker
+        env:
+          OUTLOOK_EMAIL: ${{ secrets.OUTLOOK_EMAIL }}
+          OUTLOOK_PASSWORD: ${{ secrets.OUTLOOK_PASSWORD }}
+          ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
+        run: python check_biergerpakt.py
