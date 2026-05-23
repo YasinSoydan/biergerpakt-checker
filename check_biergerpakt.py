@@ -8,7 +8,7 @@ KEYWORDS = [
     "orientatiounsdag",
 ]
 SEPTEMBER_KEYWORDS = ["september", "septembre"]
-URL = "https://biergerpakt.zesummeliewen.lu/en/new-2/welcome-to-the-biergerpakt/"
+URL = "https://biergerpakt.zesummeliewen.lu/en/our-catalogue/"
 
 def fetch_page():
     headers = {"User-Agent": "Mozilla/5.0"}
@@ -26,7 +26,7 @@ def main():
 
     page_text = fetch_page()
 
-    if True:
+    if is_september_orientation_open(page_text):
         print("🚨 SEPTEMBER ORIENTATION DAY REGISTRATION IS OPEN!")
         print(f"Go register now: {URL}")
         sys.exit(1)  # This causes the workflow to "fail" → GitHub emails you
