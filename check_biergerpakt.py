@@ -26,7 +26,7 @@ def main():
 
     page_text = fetch_page()
 
-    if is_september_orientation_open(page_text):
+    if True:
         print("🚨 SEPTEMBER ORIENTATION DAY REGISTRATION IS OPEN!")
         print(f"Go register now: {URL}")
         sys.exit(1)  # This causes the workflow to "fail" → GitHub emails you
