@@ -54,7 +54,7 @@ def main():
     
     page_text = fetch_page()
     
-    if is_september_orientation_open(page_text):
+    if True:  # TEST MODE - remove this line after confirming email works
         print("September Orientation Day detected — sending alert!")
         sender = os.environ["OUTLOOK_EMAIL"]
         password = os.environ["OUTLOOK_PASSWORD"]
